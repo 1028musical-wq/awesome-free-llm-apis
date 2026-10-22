@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>赤ちゃん手形キット 使い方説明書</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #4a3b35;
+    --muted: #8a7a72;
+    --accent: #e8968a;
+    --accent-soft: #fdeeea;
+    --sub: #8cbfae;
+    --sub-soft: #eaf5f1;
+    --warn: #d9822b;
+    --warn-soft: #fff4e6;
+    --line: #f0e2dc;
+    --paper: #fffdfb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #e9e4e1;
+    color: var(--ink);
+    font-family: "Hiragino Maru Gothic ProN", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 10mm auto;
+    padding: 11mm 14mm 12mm;
+    background: var(--paper);
+    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+
+  /* header */
+  .hero {
+    text-align: center;
+    padding: 4.5mm 0 4mm;
+    border-radius: 6mm;
+    background: var(--accent-soft);
+    margin-bottom: 5mm;
+  }
+  .hero .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .2em; font-size: 9pt; }
+  .hero h1 { margin: 1mm 0 1mm; font-size: 21pt; letter-spacing: .05em; }
+  .hero p { margin: 0; color: var(--muted); font-size: 9.5pt; }
+  .hero svg { width: 15mm; height: 15mm; vertical-align: middle; }
+
+  h2 {
+    font-size: 13pt;
+    margin: 0 0 2.5mm;
+    padding-left: 3mm;
+    border-left: 4px solid var(--accent);
+    line-height: 1.3;
+  }
+  section { margin-bottom: 4.5mm; }
+
+  /* contents */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .box { border: 1.5px solid var(--line); border-radius: 4mm; padding: 2.5mm 4mm; }
+  .box h3 { margin: 0 0 1.5mm; font-size: 10.5pt; color: var(--accent); }
+  .box.sub h3 { color: var(--sub); }
+  .box ul { margin: 0; padding-left: 4.5mm; }
+  .box li { margin: .5mm 0; }
+  .check { list-style: none; padding-left: 0 !important; }
+  .check li::before { content: "□"; margin-right: 1.5mm; color: var(--muted); }
+  .note { font-size: 8.5pt; color: var(--muted); margin: 1.5mm 0 0; }
+
+  /* steps */
+  .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .step {
+    display: grid;
+    grid-template-columns: 22mm 1fr;
+    gap: 3mm;
+    align-items: start;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 4mm;
+    padding: 2.5mm;
+  }
+  .step .ill {
+    width: 22mm; height: 22mm;
+    border-radius: 3mm;
+    background: var(--sub-soft);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .step .ill svg { width: 17mm; height: 17mm; }
+  .step .num {
+    position: absolute; top: -2mm; left: -2mm;
+    width: 7mm; height: 7mm; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-weight: 700; font-size: 10pt;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step h3 { margin: 0 0 1mm; font-size: 10.5pt; }
+  .step p { margin: 0; font-size: 9pt; line-height: 1.5; }
+
+  /* warning */
+  .warn {
+    background: var(--warn-soft);
+    border: 1.5px solid #f5d3aa;
+    border-radius: 4mm;
+    padding: 3mm 5mm;
+  }
+  .warn h2 { border-left-color: var(--warn); }
+  .warn ul { margin: 0; padding-left: 4.5mm; font-size: 9.3pt; }
+  .warn li { margin: .6mm 0; }
+  .warn strong { color: var(--warn); }
+
+  /* tips */
+  .tips { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .tip { background: var(--sub-soft); border-radius: 4mm; padding: 2.5mm 4mm; }
+  .tip h3 { margin: 0 0 1mm; font-size: 10.5pt; color: #4d8f7a; }
+  .tip p, .tip ul { margin: 0; font-size: 9.2pt; }
+  .tip ul { padding-left: 4.5mm; }
+
+  /* faq */
+  .faq dt { font-weight: 700; margin-top: 1.5mm; }
+  .faq dt::before { content: "Q. "; color: var(--accent); }
+  .faq dd { margin: .5mm 0 0; padding-left: 5.5mm; font-size: 9.3pt; position: relative; }
+  .faq dd::before { content: "A."; position: absolute; left: 0; color: var(--sub); font-weight: 700; }
+
+  /* memo */
+  .memo { border: 1.5px dashed var(--accent); border-radius: 4mm; padding: 2mm 5mm; }
+  .memo table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  .memo td { padding: 1.4mm 1mm; border-bottom: 1px solid var(--line); }
+  .memo td:first-child { width: 28mm; color: var(--muted); }
+
+  footer {
+    position: absolute; left: 15mm; right: 15mm; bottom: 9mm;
+    border-top: 1px solid var(--line);
+    padding-top: 2.5mm;
+    display: flex; justify-content: space-between;
+    font-size: 8.5pt; color: var(--muted);
+  }
+  .placeholder { background: #fff3a8; padding: 0 1mm; border-radius: 1mm; }
+  @media print { .placeholder { background: none; } }
+</style>
+</head>
+<body>
+
+<!-- ============ 1ページ目 ============ -->
+<div class="page">
+  <div class="hero">
+    <div class="eyebrow">HOW TO USE</div>
+    <h1>
+      <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="#e8968a"><ellipse cx="32" cy="42" rx="14" ry="13"/><ellipse cx="17" cy="27" rx="4.2" ry="7" transform="rotate(-25 17 27)"/><ellipse cx="25" cy="19" rx="4.2" ry="8"/><ellipse cx="34" cy="17" rx="4.2" ry="8.5"/><ellipse cx="43" cy="20" rx="4" ry="7.5" transform="rotate(10 43 20)"/><ellipse cx="50" cy="35" rx="4" ry="6.5" transform="rotate(50 50 35)"/></g></svg>
+      赤ちゃん手形キット 使い方説明書
+    </h1>
+    <p>今しかない小さな手のかたちを、きれいに残すためのガイドです。ご使用前に必ずお読みください。</p>
+  </div>
+
+  <section>
+    <h2>セット内容と、ご用意いただくもの</h2>
+    <div class="grid2">
+      <div class="box">
+        <h3>セット内容</h3>
+        <ul class="check">
+          <li>手形用インクパッド（ベビー対応・水性）</li>
+          <li>手形台紙</li>
+          <li>練習用シート</li>
+          <li>フレーム（台紙を飾れます）</li>
+          <li>使い方説明書（本書）</li>
+        </ul>
+        <p class="note">※ 開封後すぐに、内容物がそろっているかご確認ください。</p>
+      </div>
+      <div class="box sub">
+        <h3>ご用意いただくもの</h3>
+        <ul>
+          <li>ウェットティッシュ・おしりふき</li>
+          <li>ぬるま湯で絞ったタオル</li>
+          <li>汚れてもよいシートや新聞紙</li>
+          <li>平らで硬い台（雑誌・下敷きなど）</li>
+          <li>できれば大人2人（押さえる人・押す人）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>手形のとり方</h2>
+    <div class="steps">
+
+      <div class="step">
+        <div class="ill"><span class="num">1</span>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="22" width="48" height="30" rx="4" fill="#fff" stroke="#8cbfae" stroke-width="3"/><path d="M8 30h48" stroke="#8cbfae" stroke-width="3"/><circle cx="32" cy="14" r="6" fill="#e8968a"/></svg>
+        </div>
+        <div><h3>準備をする</h3>
+          <p>汚れ防止のシートを敷き、台紙を硬く平らな台の上に置きます。赤ちゃんの手を拭いて、汗や油分をとっておきます。</p></div>
+      </div>
+
+      <div class="step">
+        <div class="ill"><span class="num">2</span>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 46c6-14 10-22 18-22s12 8 18 22" fill="none" stroke="#8cbfae" stroke-width="3" stroke-linecap="round"/><path d="M24 40l-4-12M32 38V22M40 40l4-12" stroke="#e8968a" stroke-width="3.5" stroke-linecap="round"/><circle cx="32" cy="52" r="3" fill="#e8968a"/></svg>
+        </div>
+        <div><h3>タイミングを選ぶ</h3>
+          <p>ねんね中や授乳後のリラックスタイムがおすすめ。グーにしている時は、手の甲をやさしくなでると指が開きやすくなります。</p></div>
+      </div>
+
+      <div class="step">
+        <div class="ill"><span class="num">3</span>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="38" width="44" height="14" rx="3" fill="#e8968a"/><path d="M22 34c0-6 4-12 10-12s10 6 10 12" fill="#fff" stroke="#8cbfae" stroke-width="3"/><path d="M32 8v8M26 12l6 6 6-6" stroke="#8cbfae" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h3>インクをつける</h3>
+          <p>インクパッドを手のひらに<strong>ポンポンと軽く</strong>当てて、指先まで薄く均一にのばします。つけすぎるとにじみの原因になります。</p></div>
+      </div>
+
+      <div class="step">
+        <div class="ill"><span class="num">4</span>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="40" width="48" height="12" rx="2" fill="#fff" stroke="#8cbfae" stroke-width="3"/><path d="M20 38c0-10 5-18 12-18s12 8 12 18" fill="#fdeeea" stroke="#e8968a" stroke-width="3"/><path d="M32 6v9M27 11l5 5 5-5" stroke="#e8968a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h3>台紙に押す</h3>
+          <p>手首を支えて、<strong>手のひら → 指先</strong>の順に台紙へ置きます。手の甲の上から大人の手で包むように、3秒ほどやさしく押さえます。</p></div>
+      </div>
+
+      <div class="step">
+        <div class="ill"><span class="num">5</span>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="40" width="48" height="12" rx="2" fill="#fff" stroke="#8cbfae" stroke-width="3"/><path d="M20 30c0-8 5-14 12-14s12 6 12 14" fill="#fdeeea" stroke="#e8968a" stroke-width="3"/><path d="M32 36V26M27 30l5-5 5 5" stroke="#8cbfae" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h3>まっすぐ持ち上げる</h3>
+          <p>ずらさないよう、<strong>真上に</strong>そっと持ち上げます。台紙が動かないよう、もう一人が台紙の端を押さえておくと安心です。</p></div>
+      </div>
+
+      <div class="step">
+        <div class="ill"><span class="num">6</span>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#fff" stroke="#8cbfae" stroke-width="3"/><rect x="18" y="16" width="28" height="32" rx="2" fill="#eaf5f1"/><path d="M26 40c0-6 3-10 6-10s6 4 6 10z" fill="#e8968a"/></svg>
+        </div>
+        <div><h3>ふき取り・乾燥</h3>
+          <p>すぐにウェットティッシュで手を拭き、ぬるま湯のタオルで仕上げます。台紙は平らな場所で<strong>半日〜1日</strong>しっかり乾かしてから飾りましょう。</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="warn">
+    <h2>安全上のご注意</h2>
+    <ul>
+      <li><strong>インクの付いた手を口に入れないよう</strong>、作業中は赤ちゃんから目を離さないでください。</li>
+      <li>肌に傷・湿疹・かぶれがある場合は使用しないでください。異常が出たらすぐに洗い流し、医師にご相談ください。</li>
+      <li>インクパッド・小さな部品は<strong>乳幼児の手の届かない場所</strong>に保管してください。</li>
+      <li>衣類や布製品に付くと落ちにくい場合があります。汚れてもよい服で行いましょう。</li>
+    </ul>
+  </div>
+
+  <footer><span>赤ちゃん手形キット 使い方説明書</span><span>1 / 2</span></footer>
+</div>
+
+<!-- ============ 2ページ目 ============ -->
+<div class="page">
+
+  <section>
+    <h2>きれいにとるコツ</h2>
+    <div class="tips">
+      <div class="tip"><h3>まずは練習用シートで</h3>
+        <p>いきなり本番の台紙ではなく、練習用シートで1〜2回試すと、インクの量や押す力の感覚がつかめます。</p></div>
+      <div class="tip"><h3>インクは「薄く・均一に」</h3>
+        <p>しわや指紋の線がきれいに出るのは、インクが薄いとき。濃すぎると手のひらの線がつぶれてしまいます。</p></div>
+      <div class="tip"><h3>大人2人で役割分担</h3>
+        <ul><li>1人：赤ちゃんを抱っこして手首を支える</li><li>1人：インクをつけて台紙を押さえる</li></ul></div>
+      <div class="tip"><h3>足形もとれます</h3>
+        <p>足は<strong>かかと → つま先</strong>の順に。台紙を足の裏に当てる「台紙を動かす方法」のほうが、きれいにとれることもあります。</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>うまくいかなかったときは</h2>
+    <div class="grid2">
+      <div class="box"><h3>かすれる・一部が写らない</h3>
+        <p style="margin:0;font-size:9.3pt">インクが足りないか、台が柔らかい可能性があります。硬い台の上で、指の付け根や手のひらの中央もしっかり押さえましょう。</p></div>
+      <div class="box"><h3>にじむ・つぶれる</h3>
+        <p style="margin:0;font-size:9.3pt">インクのつけすぎ、または押している間に手が動いています。インクを薄くし、押さえる時間を短めにしてみてください。</p></div>
+      <div class="box"><h3>指が開かない</h3>
+        <p style="margin:0;font-size:9.3pt">無理に開かず、眠っている時に再挑戦を。手の甲や指の付け根をやさしくさすると、自然と開くことがあります。</p></div>
+      <div class="box"><h3>赤ちゃんが嫌がる・泣く</h3>
+        <p style="margin:0;font-size:9.3pt">一度中断して、ご機嫌のよい時にやり直しましょう。インクは時間をおいてもご使用いただけます。</p></div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>よくあるご質問</h2>
+    <dl style="margin:0">
+      <dt>何か月から使えますか？</dt>
+      <dd>新生児から使えます。1か月・100日・ハーフバースデー・1歳など、記念日ごとにとって成長を比べるのもおすすめです。</dd>
+      <dt>インクが手から落ちにくいときは？</dt>
+      <dd>ぬるま湯と赤ちゃん用せっけんでやさしく洗ってください。強くこすらなくても、数回の入浴で自然に落ちます。</dd>
+      <dt>インクパッドは何回くらい使えますか？</dt>
+      <dd>使用後はふたをしっかり閉めて保管すれば、くり返しお使いいただけます。乾いてきた場合はお早めにご使用ください。</dd>
+      <dt>台紙を長持ちさせるには？</dt>
+      <dd>直射日光・高温多湿を避けてください。フレームに入れて飾ると、色あせやほこりを防げます。</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>記念メモ</h2>
+    <div class="memo">
+      <table>
+        <tr><td>おなまえ</td><td></td></tr>
+        <tr><td>うまれた日</td><td>　　　　年　　　月　　　日</td></tr>
+        <tr><td>手形をとった日</td><td>　　　　年　　　月　　　日（生後　　　か月　　　日）</td></tr>
+        <tr><td>身長・体重</td><td>　　　　cm　／　　　　g</td></tr>
+        <tr><td>ひとこと</td><td></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>お問い合わせ：<span class="placeholder">ショップ名</span>　<span class="placeholder">メールアドレス / URL</span></span>
+    <span>2 / 2</span>
+  </footer>
+</div>
+
+</body>
+</html>
